@@ -25,15 +25,17 @@ app = FastAPI(
 
 # Vercel frontend URLs (production + preview)
 VERCEL_ORIGINS = [
+    "https://hrms-lite-nine-beryl.vercel.app/"
     "https://hrms-lite-nine-beryl.vercel.app",
     "https://hrms-lite-lolm12k3m-aakashprajapat084-gmailcoms-projects.vercel.app",
     "https://hrms-lite.vercel.app",
+    "https://hrms-lite-lolm12k3m-aakashprajapat084-gmailcom-projects.vercel.app",
 ]
 
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*", *VERCEL_ORIGINS],  # Allow all origins including Vercel
-    allow_methods=["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allow_methods=["*"],
     allow_headers=["*"],
     allow_credentials=True,
 )
