@@ -25,8 +25,12 @@ app = FastAPI(
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
-    allow_methods=["*"],
+    allow_origins=[
+        "*",
+        "https://hrms-lite-nine-beryl.vercel.app",
+        "https://*.vercel.app"
+    ],
+    allow_methods=["GET", "POST", "PUT", "DELETE", "OPTIONS", "PATCH"],
     allow_headers=["*"],
     allow_credentials=True,
 )
