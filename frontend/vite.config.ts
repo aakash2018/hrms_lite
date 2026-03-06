@@ -19,7 +19,7 @@ export default defineConfig({
   // Security headers for production
   preview: {
     headers: {
-      'Referrer-Policy': 'strict-origin-when-cross-origin',
+      'Referrer-Policy': 'no-referrer-when-downgrade',
       'X-Content-Type-Options': 'nosniff',
       'X-Frame-Options': 'DENY',
     },
