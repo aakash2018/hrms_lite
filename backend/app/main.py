@@ -25,8 +25,9 @@ app = FastAPI(
 
 # Vercel frontend URLs (production + preview)
 VERCEL_ORIGINS = [
+    "http://localhost:3000",           # Local React dev server
+    "http://localhost:5173",           # Vite dev server
     "https://hrms-lite-nine-beryl.vercel.app",
-    "https://hrms-lite-nine-beryl.vercel.app/",
     "https://hrms-lite-lolm12k3m-aakashprajapat084-gmailcoms-projects.vercel.app",
     "https://hrms-lite-lolm12k3m-aakashprajapat084-gmailcom-projects.vercel.app",
     "https://hrms-lite.vercel.app",
@@ -34,7 +35,7 @@ VERCEL_ORIGINS = [
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*", *VERCEL_ORIGINS],  # Allow all origins including Vercel
+    allow_origins=VERCEL_ORIGINS,  # Allow all origins including Vercel
     allow_methods=["*"],
     allow_headers=["*"],
     allow_credentials=True,
