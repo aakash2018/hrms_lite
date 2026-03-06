@@ -1,8 +1,9 @@
 import axios from 'axios';
 import type { Employee, EmployeeCreate, AttendanceRecord, AttendanceCreate, DashboardStats, AttendanceSummary } from '../types';
 
-// Use environment variable for API base URL, fallback to relative path for local dev
-const API_BASE_URL = import.meta.env.VITE_API_URL || '/api';
+// Use environment variable for API base URL, fallback to production URL
+const API_BASE_URL = import.meta.env.VITE_API_URL || 'https://hrms-lite-q81l.onrender.com/api';
+https://hrms-lite-q81l.onrender.com/
 
 const api = axios.create({ baseURL: API_BASE_URL });
 
