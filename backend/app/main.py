@@ -25,11 +25,11 @@ app = FastAPI(
 
 # Vercel frontend URLs (production + preview)
 VERCEL_ORIGINS = [
-    "https://hrms-lite-nine-beryl.vercel.app/"
     "https://hrms-lite-nine-beryl.vercel.app",
+    "https://hrms-lite-nine-beryl.vercel.app/",
     "https://hrms-lite-lolm12k3m-aakashprajapat084-gmailcoms-projects.vercel.app",
-    "https://hrms-lite.vercel.app",
     "https://hrms-lite-lolm12k3m-aakashprajapat084-gmailcom-projects.vercel.app",
+    "https://hrms-lite.vercel.app",
 ]
 
 app.add_middleware(
