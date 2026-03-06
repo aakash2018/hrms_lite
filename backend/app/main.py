@@ -23,14 +23,16 @@ app = FastAPI(
     lifespan=lifespan,
 )
 
+# Vercel frontend URLs
+VERCEL_ORIGINS = [
+    "https://hrms-lite-nine-beryl.vercel.app",
+    "https://hrms-lite.vercel.app",
+]
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[
-        "*",
-        "https://hrms-lite-nine-beryl.vercel.app",
-        "https://*.vercel.app"
-    ],
-    allow_methods=["GET", "POST", "PUT", "DELETE", "OPTIONS", "PATCH"],
+    allow_origins=["*", *VERCEL_ORIGINS],  # Allow all origins including Vercel
+    allow_methods=["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     allow_headers=["*"],
     allow_credentials=True,
 )
