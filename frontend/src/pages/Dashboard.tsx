@@ -16,7 +16,7 @@ export default function Dashboard() {
   useEffect(() => {
     Promise.all([fetchEmployees(), fetchDashboardStats()])
       .then(([empData, statsData]) => {
-        setEmployees(empData);
+        setEmployees(Array.isArray(empData) ? empData : []);
         setStats(statsData);
       })
       .catch(() => setError('Failed to load dashboard data.'))
