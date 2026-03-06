@@ -38,7 +38,7 @@ export default function EmployeesPage() {
     setLoading(true);
     setError('');
     fetchEmployees()
-      .then(setEmployees)
+      .then(data => setEmployees(Array.isArray(data) ? data : []))
       .catch(() => setError('Failed to load employees.'))
       .finally(() => setLoading(false));
   }, []);

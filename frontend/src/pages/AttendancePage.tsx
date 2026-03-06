@@ -39,7 +39,7 @@ export default function AttendancePage() {
 
   useEffect(() => {
     fetchEmployees()
-      .then(setEmployees)
+      .then(data => setEmployees(Array.isArray(data) ? data : []))
       .catch(() => setError('Failed to load employees.'))
       .finally(() => setLoadingEmployees(false));
   }, []);
@@ -49,7 +49,7 @@ export default function AttendancePage() {
     setLoadingRecords(true);
     setError('');
     fetchAttendance(selectedEmployee, selectedMonth, selectedYear)
-      .then(setRecords)
+      .then(data => setRecords(Array.isArray(data) ? data : []))
       .catch(() => setError('Failed to load attendance records.'))
       .finally(() => setLoadingRecords(false));
   }, [selectedEmployee, selectedMonth, selectedYear]);
