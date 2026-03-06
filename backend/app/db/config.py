@@ -20,7 +20,12 @@ DATABASE_NAME = os.getenv("DATABASE_NAME", config("DB_NAME", default="hrms_lite"
 
 
 async def init_db():
-    client = AsyncIOMotorClient(MONGO_URI)
+    import certifi
+    client = AsyncIOMotorClient(
+        MONGO_URI,
+        tlsCAFile=certifi.where(),
+        serverSelectionTimeoutMS=30000,
+    )
     await init_beanie(
         database=client[DATABASE_NAME],
         document_models=[Employee, Attendance],
