@@ -6,7 +6,7 @@ from typing import List
 router = APIRouter(prefix="/employees", tags=["Employees"])
 
 
-@router.post("/", response_model=EmployeeResponse, status_code=status.HTTP_201_CREATED)
+@router.post("", response_model=EmployeeResponse, status_code=status.HTTP_201_CREATED)
 async def add_employee(payload: EmployeeCreate):
     """Add a new employee"""
 
@@ -36,7 +36,7 @@ async def add_employee(payload: EmployeeCreate):
     return EmployeeResponse.from_document(employee)
 
 
-@router.get("/", response_model=List[EmployeeResponse])
+@router.get("", response_model=List[EmployeeResponse])
 async def list_employees():
     """Get all employees"""
     employees = await Employee.find_all().to_list()

@@ -11,7 +11,7 @@ import sys
 router = APIRouter(prefix="/attendance", tags=["Attendance"])
 
 
-@router.post("/", response_model=AttendanceResponse, status_code=status.HTTP_201_CREATED)
+@router.post("", response_model=AttendanceResponse, status_code=status.HTTP_201_CREATED)
 async def mark_attendance(payload: AttendanceCreate):
     """Mark attendance for an employee"""
 
