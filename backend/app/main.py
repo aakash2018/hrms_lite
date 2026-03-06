@@ -23,9 +23,10 @@ app = FastAPI(
     lifespan=lifespan,
 )
 
-# Vercel frontend URLs
+# Vercel frontend URLs (production + preview)
 VERCEL_ORIGINS = [
     "https://hrms-lite-nine-beryl.vercel.app",
+    "https://hrms-lite-lolm12k3m-aakashprajapat084-gmailcoms-projects.vercel.app",
     "https://hrms-lite.vercel.app",
 ]
 
