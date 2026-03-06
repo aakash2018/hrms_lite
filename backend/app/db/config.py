@@ -2,6 +2,7 @@ from motor.motor_asyncio import AsyncIOMotorClient
 from beanie import init_beanie
 from decouple import config
 import os
+import ssl
 from app.employee.models import Employee
 from app.attendance.models import Attendance
 
@@ -20,11 +21,18 @@ DATABASE_NAME = os.getenv("DATABASE_NAME", config("DB_NAME", default="hrms_lite"
 
 
 async def init_db():
-    import certifi
+    # SSL context for MongoDB Atlas connection
+    ssl_context = ssl.create_default_context()
+    ssl_context.check_hostname = False
+    ssl_context.verify_mode = ssl.CERT_NONE
+    
     client = AsyncIOMotorClient(
         MONGO_URI,
-        tlsCAFile=certifi.where(),
+        tls=True,
+        tlsAllowInvalidCertificates=True,
         serverSelectionTimeoutMS=30000,
+        connectTimeoutMS=30000,
+        socketTimeoutMS=30000,
     )
     await init_beanie(
         database=client[DATABASE_NAME],
